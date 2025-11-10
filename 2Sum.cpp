@@ -36,20 +36,20 @@ vector<int>twoSum(vector<int>& nums,int target){
 //SC -> O(N)
 vector<int> twoSum(vector<int> &nums, int target){
     int n=nums.size();
-    vector<pair<int,int>> v;
-    for(int i=0;i<n;i++) v.push_back({nums[i],i});
-    sort(v.begin(),v.end());
-    for(int i=0;i<n;i++){
-        int c=target-nums[i];
-        int l=i+1,r=n-1;
-        while(l<=r){
-            int m=(l+r)/2;
-            if(v[m].first==c) return {i,v[m].second};
-            if(v[m].first<c) l=m+1;
-            else r=m-1; 
+        vector<pair<int,int>> v;
+        for(int i=0;i<n;i++) v.push_back({nums[i],i});
+        sort(v.begin(),v.end());
+        for(int i=0;i<n;i++){
+            int c=target-v[i].first;
+            int l=i+1,r=n-1;
+            while(l<=r){
+                int m=(l+r)/2;
+                if(v[m].first==c) return {v[i].second,v[m].second};
+                else if(v[m].first<c) l=m+1;
+                else r=m-1;
+            }
         }
-    }
-    return {};
+        return {};
 }
 
 
