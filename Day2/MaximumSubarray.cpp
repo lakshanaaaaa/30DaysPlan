@@ -40,7 +40,7 @@ public:
     }
 
 
-    
+
 
     //Kadane's Algorithm
     //TC -> O(N)
@@ -50,7 +50,7 @@ public:
         int m=nums[0];
         int r=nums[0];
         for(int i=0;i<n;i++){
-            m=max(m,m+nums[i]);
+            m=max(nums[i]+m+nums[i]);
             r=max(r,m);
         }
         return r;
